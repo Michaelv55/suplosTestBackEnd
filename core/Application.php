@@ -39,7 +39,8 @@ class Application{
 
     }
 
-    public function response($data,$code){
+    public static function response($data,$code){
+        http_response_code($code);
         echo json_encode([
             'data'=>$data,
             'code'=>$code

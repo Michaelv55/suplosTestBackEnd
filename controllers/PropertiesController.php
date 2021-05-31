@@ -3,6 +3,7 @@
 namespace controllers;
 
 use Cities;
+use core\Application;
 use core\Request;
 use Exception;
 use Houses;
@@ -28,13 +29,21 @@ class PropertiesController{
             $request->price
         );
 
-        var_dump($house);
+        Application::response([
+            'message'=>'Ciudad creada',
+            'objects' => $house->convertObjectToArray($house)
+        ], 200);
     }
-    public function update(Request $request){
-        var_dump($request);
-    }
+
     public function delete(Request $request){
-        var_dump($request);
+        $house = houses::retrieveByPK($request->id);
+        if(!empty($house)){
+            $house->delete();
+        }
+        Application::response([
+            'message'=>'Ciudad elimiinada',
+            'objects' => $house->convertObjectToArray($house)
+        ], 200);
     }
 
     protected function validations(Request $request){
@@ -56,6 +65,10 @@ class PropertiesController{
             }
             if(is_null($request->price)){
                 throw new Exception('El parámetro "price" es requerido.', 412);
+            }
+        }else if($request->method == 'delete'){
+            if(is_null($request->id)){
+                throw new Exception('El parámetro "address" es requerido.', 412);
             }
         }
     }
