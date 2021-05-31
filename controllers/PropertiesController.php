@@ -37,7 +37,7 @@ class PropertiesController{
 
     public function read(Request $request){
         Application::response([
-            'message'=>'Ciudad creada',
+            'message'=>'Ciudades',
             'objects' => Houses::all()
         ], 200);
     }
