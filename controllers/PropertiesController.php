@@ -17,15 +17,15 @@ class PropertiesController{
         $city = Cities::getByName($request->city);
         $city = empty($city) ? Cities::create($request->city) : $city[0];
 
-        $houseType = Types::getByName($request->houseType);
-        $houseType = empty($houseType) ? Types::create($request->houseType) : $houseType[0];
+        $type = Types::getByName($request->type);
+        $type = empty($type) ? Types::create($request->type) : $type[0];
 
         $house = Houses::create(
             $request->address, 
             $city->ID, 
             $request->phone, 
             $request->postalCode, 
-            $houseType->ID, 
+            $type->ID, 
             $request->price
         );
 
@@ -60,7 +60,7 @@ class PropertiesController{
             if(is_null($request->postalCode)){
                 throw new Exception('El parámetro "postalCode" es requerido.', 412);
             }
-            if(is_null($request->houseType)){
+            if(is_null($request->type)){
                 throw new Exception('El parámetro "type" es requerido.', 412);
             }
             if(is_null($request->price)){
