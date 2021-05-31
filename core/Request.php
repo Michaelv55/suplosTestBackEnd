@@ -25,6 +25,8 @@ class Request{
             throw new Exception("Bad Request", 412);
         }
         $pathParams = explode('/', trim($_SERVER['PATH_INFO']?:'','/'));
+        SqlInjector::suppressInjection($pathParams);
+        SqlInjector::suppressInjection($_GET);
         $this->controller = array_shift($pathParams);
         $this->method = array_shift($pathParams);
         $this->pathParams = $pathParams;
