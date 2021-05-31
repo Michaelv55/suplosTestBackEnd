@@ -9,8 +9,17 @@ use Exception;
 use Houses;
 use Types;
 
+/**
+ * Controlador para el uso general de las propiedades
+ */
 class PropertiesController{
 
+    /**
+     * crea una ciudad para el usuario
+     *
+     * @param Request $request
+     * @return void
+     */
     public function create(Request $request){
         $this->validations($request);
 
@@ -35,6 +44,12 @@ class PropertiesController{
         ], 200);
     }
 
+    /**
+     * Obtiene todsa las ciudades del usuario
+     *
+     * @param Request $request
+     * @return void
+     */
     public function read(Request $request){
         Application::response([
             'message'=>'Ciudades',
@@ -42,6 +57,12 @@ class PropertiesController{
         ], 200);
     }
 
+    /**
+     * Elimina una ciudad del usuario
+     *
+     * @param Request $request
+     * @return void
+     */
     public function delete(Request $request){
         $house = houses::retrieveByPK($request->id);
         if(!empty($house)){
@@ -53,6 +74,12 @@ class PropertiesController{
         ], 200);
     }
 
+    /**
+     * Validaciones de los parámetros de entrada
+     *
+     * @param Request $request
+     * @return void
+     */
     protected function validations(Request $request){
         if($request->method == 'create'){
             if(is_null($request->address)){

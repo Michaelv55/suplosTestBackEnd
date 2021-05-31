@@ -1,5 +1,4 @@
 <?php
-use controllers\PropertiesController;
 
 spl_autoload_register(function($className){
     $directorys = ['controllers', 'helpers', 'models'];
@@ -15,13 +14,6 @@ spl_autoload_register(function($className){
         }
     }
 });
-
-$dirControllers = scandir('controllers');
-array_shift($dirControllers);
-array_shift($dirControllers);
-foreach ($dirControllers as $key => $value) {
-    include APP.'controllers'.DIRECTORY_SEPARATOR.$value;
-};
 
 
 

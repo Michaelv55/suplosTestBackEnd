@@ -2,10 +2,14 @@
 
 use core\Orm;
 
+
+/**
+ * Representación de la tabla HOUSES de la base de datos en PHP
+ */
 class Houses extends Orm{
 
     /**
-     *
+     *crea un registro
      * @param string $name
      * @return Houses
      */
