@@ -2,12 +2,12 @@
 
 use core\Orm;
 
-class Cities extends Orm{
+class Types extends Orm{
 
     /**
      *
      * @param string $name
-     * @return Cities
+     * @return Types
      */
     public static function create($name){
         $model = new self();
