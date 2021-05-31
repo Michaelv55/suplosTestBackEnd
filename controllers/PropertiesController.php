@@ -35,6 +35,13 @@ class PropertiesController{
         ], 200);
     }
 
+    public function read(Request $request){
+        Application::response([
+            'message'=>'Ciudad creada',
+            'objects' => Houses::all()
+        ], 200);
+    }
+
     public function delete(Request $request){
         $house = houses::retrieveByPK($request->id);
         if(!empty($house)){
