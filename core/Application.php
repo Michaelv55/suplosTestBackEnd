@@ -4,7 +4,6 @@ namespace core;
 
 use core\Request;
 use Exception;
-use Route;
 
 class Application{
 
@@ -32,7 +31,7 @@ class Application{
     }
 
     private function getValidateMethod(){
-        $class = 'controllers\\'.$this->request->controller;;
+        $class = 'controllers\\'.$this->request->controller;
         if(method_exists($class, $this->request->method)){
             return $this->request->method;
         }

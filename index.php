@@ -16,5 +16,7 @@ set_exception_handler(function($exception){
 
 require APP . 'autoload.php';
 
+require APP . 'config'.DIRECTORY_SEPARATOR.'configDataBase.php';
+
 $app = new Application();
 $app->run();
